@@ -16,7 +16,6 @@ function userExists(user) {
 
 app.post(config.loginRoute, (req, res) => {
   const user = req.body;
-  console.log("user:", user);
   if (!userExists(user)) res.status(401).send("failed login");
   jwt.sign(user, "secretKey", function name(err, token) {
     res.json({
